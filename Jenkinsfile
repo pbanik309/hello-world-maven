@@ -7,6 +7,10 @@ pipeline {
         GITHUB_REPO_URL = "https://github.com/pbanik309/hello-world-maven.git"
     }
 
+    tools {
+        maven 'Maven 3.9.9'  // Use the Maven installation you configured
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
