@@ -9,7 +9,6 @@ pipeline {
 
     tools {
         maven 'Maven 3.9.9'  // Use the Maven installation you configured
-        docker 'Docker'
     }
 
     stages {
@@ -24,6 +23,7 @@ pipeline {
             steps {
                 // Run Maven to build the project
                 script {
+                    sh 'docker --version'
                     sh 'mvn clean install'
                 }
             }
