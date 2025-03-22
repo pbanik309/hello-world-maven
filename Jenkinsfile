@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // Build a Docker image from the Dockerfile in the project
                 script {
-                    sh 'docker build -t ${DOCKER_IMAGE_NAME}:${GIT_COMMIT} .'
+                    sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
                 // Login to Docker Hub (Make sure Jenkins has credentials stored for this)
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
-                        sh 'docker push ${DOCKER_IMAGE_NAME}:${GIT_COMMIT}'
+                        sh 'docker push ${DOCKER_IMAGE_NAME}'
                     }
                 }
             }
