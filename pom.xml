@@ -22,32 +22,14 @@
                     </archive>
                 </configuration>
             </plugin>
-                    <plugin>
-            <groupId>io.fabric8</groupId>
-            <artifactId>docker-maven-plugin</artifactId>
-            <version>0.38.0</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>build</goal>
-                    </goals>
-                    <configuration>
-                        <images>
-                            <image>
-                                <!-- Provide the name of the Docker image -->
-                                <name>hello-world-image:latest</name>
-                                <build>
-                                    <dockerFileDir>${project.basedir}</dockerFileDir>
-                                    <tags>
-                                        <tag>latest</tag>
-                                    </tags>
-                                </build>
-                            </image>
-                        </images>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.38.0</version>
+                <configuration>
+                <dockerHost>tcp://localhost:2375</dockerHost> <!-- For remote Docker host -->
+                </configuration>
+  </plugin>
         </plugins>
     </build>
 </project>
