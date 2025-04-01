@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Build a Docker image
                 script {
-                    sh 'docker build -t hello-world:latest .'
+                    sh 'docker build -t hello-world:new .'
                 }
             }
         }
