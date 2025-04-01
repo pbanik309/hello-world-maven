@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables
-        DOCKER_IMAGE_NAME = "pbanik309/hello-world"
+        DOCKER_IMAGE_NAME = "pbanik309/test"
         GITHUB_REPO_URL = "https://github.com/pbanik309/hello-world-maven.git"
     }
 
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Build a Docker image
                 script {
-                    sh 'docker build -t ${DOCKER_IMAGE_NAME}:new .'
+                    sh 'docker build -t demo:latest .'
                 }
             }
         }
