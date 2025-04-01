@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Build a Docker image
                 script {
-                    sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
+                    sh 'docker build -t ${DOCKER_IMAGE_NAME}:new .'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
                 // Login to Docker Hub
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
-                        sh 'docker push ${DOCKER_IMAGE_NAME}:new'
+                        sh 'docker push ${DOCKER_IMAGE_NAME}'
                     }
                 }
             }
