@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Build a Docker image
                 script {
-                    sh 'docker build -t demo:latest .'
+                    sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
                 }
             }
         }
