@@ -3,25 +3,25 @@ pipeline {
 
     environment {
         // Define environment variables
-        DOCKER_IMAGE_NAME = "pbanik309/hello-world"
+        DOCKER_IMAGE_NAME = "demo/hello-world"
         GITHUB_REPO_URL = "https://github.com/pbanik309/hello-world-maven.git"
     }
 
     tools {
-        maven 'Maven 3.9.9'  // Use the Maven installation you configured
+        maven 'Maven 3.9.9'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                // Fetch code from GitHub
+                // Fetch code
                 git branch: 'master', url: "${GITHUB_REPO_URL}"
             }
         }
 
         stage('Build with Maven') {
             steps {
-                // Run Maven to build the project
+                // Run Maven
                 script {
                     sh 'docker --version'
                     sh 'mvn clean install'
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                // Build a Docker image from the Dockerfile in the project
+                // Build a Docker image
                 script {
                     sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
                 }
@@ -40,7 +40,7 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                // Login to Docker Hub (Make sure Jenkins has credentials stored for this)
+                // Login to Docker Hub
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         sh 'docker push ${DOCKER_IMAGE_NAME}'
