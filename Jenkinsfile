@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables
-        DOCKER_IMAGE_NAME = "demo/hello-world"
+        DOCKER_IMAGE_NAME = "pbanik309/hello-world-maven"
         GITHUB_REPO_URL = "https://github.com/pbanik309/hello-world-maven.git"
     }
 
