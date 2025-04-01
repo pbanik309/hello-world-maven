@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables
-        DOCKER_IMAGE_NAME = "pbanik309/test"
+        DOCKER_IMAGE_NAME = "pbanik309/demo"
         GITHUB_REPO_URL = "https://github.com/pbanik309/hello-world-maven.git"
     }
 
@@ -43,7 +43,7 @@ pipeline {
                 // Login to Docker Hub
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
-                        sh 'docker push demo:latest'
+                        sh 'docker push ${DOCKER_IMAGE_NAME}'
                     }
                 }
             }
